@@ -40,9 +40,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
                 <ul>
                     <li>vue project 생성</li>
                     <li><a href="https://learn.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3">about_Execution_Policies</a></li>
+                    <li>내일부터 BASE BALL GAME PROJECT 시작</li>
                 </ul>
     </details>
 
 </div>
-
-[naver](https://www.naver.com)
