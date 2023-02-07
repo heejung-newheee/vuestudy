@@ -34,16 +34,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Vue Study
 
-<details>
-    <summary>23-03-08</summary>
-        <div markdown="1">
+<div markdown="1">
+    <details>
+        <summary>23-03-08</summary>
+                <ul>
+                    <li>vue project 생성</li>
+                    <li>[about_Execution_Policies](https://learn.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3)</li>
+                </ul>
+    </details>
 
-            <ul>
-                <li>vue project 생성</li>
-                <li>[about_Execution_Policies](https://learn.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3)</li>
-
-            </ul>
-
-        </div>
-
-</details>
+</div>
