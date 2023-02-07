@@ -36,6 +36,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details>
     <summary>23-03-08</summary>
-    * vue project 생성
-    * [about_Execution_Policies](https://learn.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3)
+        <div markdown="1">
+
+            <ul>
+                <li>vue project 생성</li>
+                <li>[about_Execution_Policies](https://learn.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3)</li>
+
+            </ul>
+
+        </div>
+
 </details>
