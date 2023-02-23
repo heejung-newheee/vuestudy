@@ -12,17 +12,24 @@
     </div>
     <div class="box">
       <span> 정 답 : </span>
-      <input v-model="inputAnswer" />
+      <input v-model="inputAnswer" @keyup.enter="onClickCheckResult" />
       <button class="btn" @click="onClickCheckResult">
         <span> 결과확인 </span>
       </button>
     </div>
-    <div class="box">
+    <div class="box result_box">
       <span> 결 과 : </span>
-      <input :value="quizResult" />
+      <input :value="result" />
+    </div>
+    <div class="result_list">
+      <ul>
+        <li v-for="(item, i) in resultArray" :key="i">
+          <span> {{ i + "번째" }} :{{ item }} </span>
+        </li>
+      </ul>
     </div>
     <div class="restart_btn box">
-      <button class="btn">다시하기</button>
+      <button class="btn" @click="resetValues">다시하기</button>
     </div>
   </div>
 </template>
@@ -33,13 +40,13 @@ export default {
     return {
       quizLength: "",
       quizArray: [],
-      inputAnswer: [],
-      quizResult: "",
+      inputAnswer: "",
+      inputArray: [],
+      result: "",
+      resultArray: [],
     };
   },
-  created() {
-    this.startGame();
-  },
+  created() {},
   watch: {
     // watch는 data 변경 감지, 변경 될 때마다 실행 할 함수를 설정
   },
@@ -49,12 +56,21 @@ export default {
   methods: {
     // method는 참조하고 있는 data가 변하지 않아도 렌더링할 때마다, 호출 될 때마다 연산.
     startGame: function () {
+      const length = this.quizLength;
+      let randomArr = [];
       let num;
-
-      for (let i = 0; i < this.quizLength; i++) {
-        num = Math.random() * 10;
-        this.quizArray.push(num);
+      for (let i = 0; i < length; i++) {
+        num = Math.ceil(Math.random() * 9);
+        if (randomArr.indexOf(num) === -1) {
+          randomArr.push(num);
+        } else {
+          i--;
+        }
       }
+
+      this.quizArray = randomArr;
+      randomArr = [];
+      console.log(this.quizArray);
     },
     inputQuizLength() {
       console.log(this.quizLength);
@@ -63,11 +79,54 @@ export default {
         alert(num + "말고 1-9사이 정수 입력!");
       } else {
         alert(num + "자리 숫자로 게임 시작!");
-        this.quizLength = "";
+        this.startGame();
       }
     },
-    onClickCheckResult: function () {
-      console.log(this.quizLength);
+    onClickCheckResult() {
+      console.log(this.quizArray);
+      const length = this.quizArray.length;
+      let strike = 0;
+      let ball = 0;
+      for (let i = 0; i < length; i++) {
+        this.inputArray.push(+this.inputAnswer.substring(i, i + 1));
+      }
+      console.log(this.inputArray);
+      for (let i = 0; i < length; i++) {
+        for (let j = 0; j < length; j++) {
+          if (this.quizArray[i] === this.inputArray[j] && i === j) {
+            strike++;
+          }
+          if (this.quizArray[i] === this.inputArray[j] && i !== j) {
+            ball++;
+          }
+        }
+      }
+      if (this.inputArray === "") {
+        alert(length + "자리 수만큼 답 입력하세요!");
+        return;
+      }
+
+      if (this.inputAnswer !== "") {
+        if (strike == length) {
+          this.result = strike + "STRIKE!! YOU WIN!!!";
+          this.resultArray.push(this.result);
+        } else if (strike + ball == 0) {
+          this.result = "OUT!";
+          this.resultArray.push(this.result);
+        } else {
+          this.result = strike + "strike, " + ball + "ball !";
+          this.resultArray.push(this.result);
+        }
+      }
+      this.inputArray = [];
+    },
+    resetValues() {
+      this.quizLength = "";
+      this.quizArray = [];
+      this.inputAnswer = "";
+      this.inputArray = [];
+      this.result = "";
+      this.resultArray = [];
     },
   },
   mounted() {},
@@ -103,6 +162,9 @@ input {
 button {
   margin-left: 6px;
 }
+button:hover {
+  cursor: pointer;
+}
 .btn {
   background-color: rgba(255, 179, 179, 0.774);
   border-radius: 4px;
@@ -113,6 +175,23 @@ button {
   .btn {
     width: 120px;
     height: 50px;
+  }
+}
+
+.result_box {
+  height: flex;
+  input {
+    width: 80px;
+  }
+}
+.result_list li {
+  display: block;
+  height: 20px;
+
+  span {
+    font-size: 14px;
+    float: left;
+    padding-left: 50px;
   }
 }
 </style>
