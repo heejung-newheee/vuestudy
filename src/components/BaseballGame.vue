@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Baseball Game</h1>
-    <h1>희정쌤과 GIT STUDY</h1>
+    <h1>희정쌤과 GIT STUDY "hahaha"</h1>
     <div class="box">
       <span> 자릿수: </span>
       <input
