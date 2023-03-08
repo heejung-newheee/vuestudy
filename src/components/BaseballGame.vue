@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Baseball Game</h1>
+    <h1>희정쌤과 GIT STUDY</h1>
     <div class="box">
       <span> 자릿수: </span>
       <input
@@ -72,8 +73,8 @@ export default {
       randomArr = [];
       console.log(this.quizArray);
     },
+    checkDuplicate() {},
     inputQuizLength() {
-      console.log(this.quizLength);
       let num = this.quizLength;
       if (num < 1 || num > 9 || typeof num === "string" || num === "") {
         alert(num + "말고 1-9사이 정수 입력!");
